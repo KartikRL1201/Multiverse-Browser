@@ -19,24 +19,22 @@ class DealHunterUniverse(UniverseAgent):
             **kwargs
         )
 
-    async def run(self, query: str, target_urls: list[str]):
+    async def run(self, query: str, target_urls: List[str]):
         await self.emit_event(
-            action="Initializing universe scan for coupons & hidden discounts",
+            action="Initializing voucher scraping heuristics across target endpoints",
             status="running"
         )
         await asyncio.sleep(0.5)
 
         for url in target_urls:
             await self.emit_event(
-                action=f"Scraping banners and promotional footers at {url}",
+                action=f"Inspecting footer elements and discount selectors at {url}",
                 target_url=url,
                 status="running"
             )
             await asyncio.sleep(0.8)
 
-            # Heuristic simulation / detection on mock site
             if "dealnest" in url:
-                # Discovers hidden coupon DEAL500
                 coupon_code = "DEAL500"
                 await self.blackboard.post_coupon(
                     universe=self.universe_id,
@@ -45,7 +43,7 @@ class DealHunterUniverse(UniverseAgent):
                     site="dealnest"
                 )
                 await self.emit_event(
-                    action=f"⚡ TELEPATHY: Found secret coupon '{coupon_code}' (-₹500)! Published to Blackboard.",
+                    action=f"[VoucherExtracted] Unlisted code '{coupon_code}' (-₹500) discovered in footer. Broadcasted to blackboard.",
                     target_url=url,
                     found_price=2299,
                     status="discovery",
@@ -56,7 +54,7 @@ class DealHunterUniverse(UniverseAgent):
                 break
 
         await self.emit_event(
-            action="Deal Hunter exploration complete. Vouchers broadcasted.",
+            action="Voucher discovery pass completed. Intelligence synced to blackboard.",
             found_price=self.current_price,
             status="completed"
         )

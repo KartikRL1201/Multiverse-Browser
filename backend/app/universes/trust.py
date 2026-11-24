@@ -19,7 +19,7 @@ class TrustUniverse(UniverseAgent):
             **kwargs
         )
 
-    async def run(self, query: str, target_urls: list[str]):
+    async def run(self, query: str, target_urls: List[str]):
         await self.emit_event(
             action="Initializing trust audit on seller claims and warranty terms",
             status="running"
@@ -45,7 +45,7 @@ class TrustUniverse(UniverseAgent):
                 evidence_url=fk_url
             )
             await self.emit_event(
-                action="🚨 DECEPTIVE DISCOUNT FLAGGED: Fake MRP inflation detected (Claimed ₹6,999 vs true ₹3,499)",
+                action="[FakeMRPFlagged] Deceptive discount detected: claimed MRP ₹6,999 vs verified index ₹3,499",
                 target_url=fk_url,
                 found_price=2499,
                 status="flagged",

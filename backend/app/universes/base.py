@@ -1,6 +1,6 @@
 import asyncio
 import logging
-from typing import Dict, Any, Optional, Callable
+from typing import Dict, Any, Optional, Callable, List
 from abc import ABC, abstractmethod
 from backend.app.blackboard import Blackboard, global_blackboard
 from backend.app.config import settings
@@ -31,7 +31,7 @@ class UniverseAgent(ABC):
         self.max_steps = settings.MAX_STEPS_PER_UNIVERSE
         self.is_active = True
         self.current_price: Optional[float] = None
-        self.evidence_screenshots: list[str] = []
+        self.evidence_screenshots: List[str] = []
         self.findings: Dict[str, Any] = {}
 
     async def emit_event(
@@ -63,6 +63,6 @@ class UniverseAgent(ABC):
         return event
 
     @abstractmethod
-    async def run(self, query: str, target_urls: list[str]):
+    async def run(self, query: str, target_urls: List[str]):
         """Executes the universe's autonomous strategy"""
         pass

@@ -19,7 +19,7 @@ class BestValueUniverse(UniverseAgent):
             **kwargs
         )
 
-    async def run(self, query: str, target_urls: list[str]):
+    async def run(self, query: str, target_urls: List[str]):
         await self.emit_event(
             action="Initializing value matrix: computing specs-to-price ratio",
             status="running"

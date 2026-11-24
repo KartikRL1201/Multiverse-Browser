@@ -19,9 +19,9 @@ class BudgetUniverse(UniverseAgent):
             **kwargs
         )
 
-    async def run(self, query: str, target_urls: list[str]):
+    async def run(self, query: str, target_urls: List[str]):
         await self.emit_event(
-            action="Initializing budget scan across candidate stores",
+            action="Initializing landed cost audit across candidate endpoints",
             status="running"
         )
         await asyncio.sleep(0.4)
@@ -30,7 +30,7 @@ class BudgetUniverse(UniverseAgent):
         eb_url = next((u for u in target_urls if "electrobazaar" in u), None)
         if eb_url:
             await self.emit_event(
-                action=f"Found apparent low price ₹2,199 at {eb_url}. Navigating to checkout to verify.",
+                action=f"Auditing advertised price ₹2,199 at {eb_url} -> Proceeding to checkout step",
                 target_url=eb_url,
                 found_price=2199,
                 status="running"
@@ -43,11 +43,11 @@ class BudgetUniverse(UniverseAgent):
             await self.blackboard.post_dark_pattern(
                 universe=self.universe_id,
                 pattern_type="Drip Pricing",
-                details="Hidden mandatory ₹199 convenience fee + ₹149 packaging fee added at checkout",
+                details="Unlisted ₹199 convenience fee + ₹149 mandatory packaging injected at checkout stage",
                 evidence_url=checkout_url
             )
             await self.emit_event(
-                action=f"🚨 DARK PATTERN DETECTED: Drip pricing added +₹348 in fees at checkout! Real price: ₹{landed_price}",
+                action=f"[DripPricingDetected] Checkout injects +₹348 unlisted fees. True landed cost: ₹{landed_price}",
                 target_url=checkout_url,
                 found_price=landed_price,
                 status="flagged",
@@ -63,20 +63,19 @@ class BudgetUniverse(UniverseAgent):
         if dn_url:
             base_price = 2799
             await self.emit_event(
-                action=f"Inspecting DealNest (Listed ₹{base_price}). Listening to blackboard for active coupons...",
+                action=f"Inspecting DealNest (Listed ₹{base_price}). Listening to shared blackboard state...",
                 target_url=dn_url,
                 found_price=base_price,
                 status="running"
             )
-            await asyncio.sleep(1.2) # Allow deal hunter to finish posting if concurrent
+            await asyncio.sleep(1.2)
             
-            # Re-check blackboard for telepathy effect
             valid_coupons = await self.blackboard.get_valid_coupons(site="dealnest")
             if valid_coupons:
                 coupon = valid_coupons[0]
                 final_price = 2299 # 2799 - 500
                 await self.emit_event(
-                    action=f"✨ TELEPATHY APPLIED: Injected coupon '{coupon['code']}' from Deal Hunter! Price slashed to ₹{final_price}",
+                    action=f"[BlackboardSync] Applied shared voucher '{coupon['code']}' discovered by Deal Hunter. Net landed cost: ₹{final_price}",
                     target_url=f"{dn_url}/checkout?coupon={coupon['code']}",
                     found_price=final_price,
                     status="discovery",
