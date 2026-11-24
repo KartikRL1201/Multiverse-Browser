@@ -1,154 +1,154 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 700" width="100%" height="100%" style="background:#090A0E; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Geist', sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 700" width="100%" height="100%" style="background:#FFFFFF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Plus Jakarta Sans', Roboto, sans-serif;">
   <defs>
-    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="0.75" fill="#1E2330" />
+    <pattern id="light-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.75" fill="#E2E8F0" />
     </pattern>
-    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#475569" />
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#64748B" />
     </marker>
-    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#3B82F6" />
-    </marker>
+    <filter id="card-shadow" x="-3%" y="-3%" width="106%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.04"/>
+    </filter>
   </defs>
 
-  <!-- Background grid pattern -->
-  <rect width="100%" height="100%" fill="url(#grid)" />
+  <!-- Background grid -->
+  <rect width="100%" height="100%" fill="url(#light-grid)" />
 
-  <!-- Title & Context Header -->
-  <g transform="translate(48, 42)">
-    <text x="0" y="0" fill="#F8FAFC" font-size="18" font-weight="700" letter-spacing="-0.5">MULTIVERSE BROWSER · SYSTEM SPECIFICATION</text>
-    <text x="0" y="20" fill="#64748B" font-size="11" font-family="'Geist Mono', monospace">wHACKiest 2026 // Track 2: Beyond the Browser // Parallel Swarm Heuristics &amp; Shared Blackboard</text>
+  <!-- Title Header -->
+  <g transform="translate(48, 44)">
+    <text x="0" y="0" fill="#0F172A" font-size="19" font-weight="800" letter-spacing="-0.5">MULTIVERSE BROWSER · SYSTEM SPECIFICATION</text>
+    <text x="0" y="20" fill="#64748B" font-size="11" font-family="'JetBrains Mono', monospace" font-weight="500">wHACKiest 2026 // Track 2: Beyond the Browser // Parallel Swarm Heuristics &amp; Shared Blackboard</text>
   </g>
 
   <!-- 1. INTENT & ORCHESTRATION LAYER -->
-  <g transform="translate(48, 90)">
+  <g transform="translate(48, 92)">
     <!-- User Input -->
-    <rect width="260" height="84" rx="8" fill="#10131B" stroke="#1E2433" stroke-width="1" />
-    <text x="16" y="24" fill="#94A3B8" font-size="9" font-family="'Geist Mono', monospace" font-weight="600" letter-spacing="0.5">01 // INTENT INGESTION</text>
-    <text x="16" y="46" fill="#F1F5F9" font-size="13" font-weight="600">Goal: Voice / Natural Language</text>
+    <rect width="260" height="84" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#card-shadow)" />
+    <text x="16" y="24" fill="#64748B" font-size="9" font-family="'JetBrains Mono', monospace" font-weight="700" letter-spacing="0.5">01 // INTENT INGESTION</text>
+    <text x="16" y="46" fill="#0F172A" font-size="13" font-weight="700">Goal: Voice / Natural Language</text>
     <text x="16" y="64" fill="#64748B" font-size="11">e.g. "Wireless ANC headphones &lt; ₹3,000"</text>
 
     <!-- Connector -->
-    <path d="M 260 42 L 305 42" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)" />
+    <path d="M 260 42 L 305 42" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow-slate)" />
 
     <!-- ElevenLabs STT -->
     <g transform="translate(305, 0)">
-      <rect width="280" height="84" rx="8" fill="#10131B" stroke="#1E2433" stroke-width="1" />
-      <text x="16" y="24" fill="#60A5FA" font-size="9" font-family="'Geist Mono', monospace" font-weight="600" letter-spacing="0.5">SPONSOR // ELEVENLABS SCRIBE</text>
-      <text x="16" y="46" fill="#F1F5F9" font-size="13" font-weight="600">Multilingual Realtime STT</text>
+      <rect width="280" height="84" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#card-shadow)" />
+      <text x="16" y="24" fill="#2563EB" font-size="9" font-family="'JetBrains Mono', monospace" font-weight="700" letter-spacing="0.5">SPONSOR // ELEVENLABS SCRIBE</text>
+      <text x="16" y="46" fill="#0F172A" font-size="13" font-weight="700">Multilingual Realtime STT</text>
       <text x="16" y="64" fill="#64748B" font-size="11">&lt;150ms latency · 90+ regional languages</text>
     </g>
 
     <!-- Connector -->
-    <path d="M 585 42 L 630 42" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)" />
+    <path d="M 585 42 L 630 42" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow-slate)" />
 
     <!-- AWS Bedrock Strategy Planner -->
     <g transform="translate(630, 0)">
-      <rect width="394" height="84" rx="8" fill="#10131B" stroke="#1E2433" stroke-width="1" />
-      <text x="16" y="24" fill="#818CF8" font-size="9" font-family="'Geist Mono', monospace" font-weight="600" letter-spacing="0.5">SPONSOR // AWS BEDROCK (CLAUDE 3.5)</text>
-      <text x="16" y="46" fill="#F1F5F9" font-size="13" font-weight="600">Autonomous Swarm Strategy Planner</text>
+      <rect width="394" height="84" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#card-shadow)" />
+      <text x="16" y="24" fill="#7C3AED" font-size="9" font-family="'JetBrains Mono', monospace" font-weight="700" letter-spacing="0.5">SPONSOR // AWS BEDROCK (CLAUDE 3.5)</text>
+      <text x="16" y="46" fill="#0F172A" font-size="13" font-weight="700">Autonomous Swarm Strategy Planner</text>
       <text x="16" y="64" fill="#64748B" font-size="11">Decomposes goal into 4 specialized universe heuristics</text>
     </g>
   </g>
 
   <!-- Connector Down to Universes -->
-  <path d="M 827 174 L 827 205 L 560 205 L 560 225" stroke="#334155" stroke-width="1.5" stroke-dasharray="3 3" fill="none" marker-end="url(#arrow)" />
+  <path d="M 827 176 L 827 205 L 560 205 L 560 225" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="3 3" fill="none" marker-end="url(#arrow-slate)" />
 
   <!-- 2. PARALLEL AGENT SWARM CONTAINER -->
   <g transform="translate(48, 225)">
-    <rect width="1024" height="195" rx="10" fill="#0D0F16" stroke="#1B202D" stroke-width="1" />
-    <text x="20" y="24" fill="#64748B" font-size="10" font-family="'Geist Mono', monospace" font-weight="600" letter-spacing="0.5">ISOLATED HEADLESS AGENT RUNTIMES // PLAYWRIGHT / AGENTCORE BROWSER (READ-ONLY ENFORCED)</text>
+    <rect width="1024" height="195" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4 4" />
+    <text x="20" y="24" fill="#64748B" font-size="10" font-family="'JetBrains Mono', monospace" font-weight="700" letter-spacing="0.5">ISOLATED HEADLESS AGENT RUNTIMES // PLAYWRIGHT / AGENTCORE BROWSER (READ-ONLY ENFORCED)</text>
 
     <!-- Universe 1 -->
     <g transform="translate(20, 38)">
-      <rect width="230" height="138" rx="6" fill="#12151E" stroke="#1E2435" stroke-width="1" />
-      <text x="14" y="24" fill="#34D399" font-size="9" font-family="'Geist Mono', monospace" font-weight="600">UNIVERSE 01 // BUDGET</text>
-      <text x="14" y="46" fill="#F1F5F9" font-size="12" font-weight="600">Landed Cost Auditor</text>
-      <text x="14" y="66" fill="#94A3B8" font-size="10">Drills to final checkout step</text>
-      <text x="14" y="82" fill="#94A3B8" font-size="10">Detects drip pricing fees</text>
-      <rect x="14" y="96" width="202" height="26" rx="4" fill="#090B10" stroke="#1E2435" />
-      <text x="22" y="113" fill="#F43F5E" font-size="10" font-family="'Geist Mono', monospace">Flagged: +₹348 Drip Fee</text>
+      <rect width="230" height="138" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#card-shadow)" />
+      <text x="14" y="24" fill="#059669" font-size="9" font-family="'JetBrains Mono', monospace" font-weight="700">UNIVERSE 01 // BUDGET</text>
+      <text x="14" y="46" fill="#0F172A" font-size="12" font-weight="700">Landed Cost Auditor</text>
+      <text x="14" y="66" fill="#64748B" font-size="10">Drills to final checkout step</text>
+      <text x="14" y="82" fill="#64748B" font-size="10">Detects hidden fee injection</text>
+      <rect x="14" y="96" width="202" height="26" rx="6" fill="#FFF1F2" stroke="#FECDD3" />
+      <text x="22" y="113" fill="#E11D48" font-size="10" font-family="'JetBrains Mono', monospace" font-weight="600">Flagged: +₹348 Drip Fee</text>
     </g>
 
     <!-- Universe 2 -->
     <g transform="translate(268, 38)">
-      <rect width="230" height="138" rx="6" fill="#12151E" stroke="#1E2435" stroke-width="1" />
-      <text x="14" y="24" fill="#FBBF24" font-size="9" font-family="'Geist Mono', monospace" font-weight="600">UNIVERSE 02 // VOUCHER</text>
-      <text x="14" y="46" fill="#F1F5F9" font-size="12" font-weight="600">Deal &amp; Promo Scraper</text>
-      <text x="14" y="66" fill="#94A3B8" font-size="10">Inspects footer &amp; DOM markdown</text>
-      <text x="14" y="82" fill="#94A3B8" font-size="10">Extracts unlisted discount codes</text>
-      <rect x="14" y="96" width="202" height="26" rx="4" fill="#090B10" stroke="#1E2435" />
-      <text x="22" y="113" fill="#FBBF24" font-size="10" font-family="'Geist Mono', monospace">Extracted: DEAL500 (-₹500)</text>
+      <rect width="230" height="138" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#card-shadow)" />
+      <text x="14" y="24" fill="#D97706" font-size="9" font-family="'JetBrains Mono', monospace" font-weight="700">UNIVERSE 02 // VOUCHER</text>
+      <text x="14" y="46" fill="#0F172A" font-size="12" font-weight="700">Deal &amp; Promo Scraper</text>
+      <text x="14" y="66" fill="#64748B" font-size="10">Inspects footer &amp; DOM markdown</text>
+      <text x="14" y="82" fill="#64748B" font-size="10">Extracts unlisted codes</text>
+      <rect x="14" y="96" width="202" height="26" rx="6" fill="#FFFBEB" stroke="#FDE68A" />
+      <text x="22" y="113" fill="#D97706" font-size="10" font-family="'JetBrains Mono', monospace" font-weight="600">Extracted: DEAL500 (-₹500)</text>
     </g>
 
     <!-- Universe 3 -->
     <g transform="translate(516, 38)">
-      <rect width="230" height="138" rx="6" fill="#12151E" stroke="#1E2435" stroke-width="1" />
-      <text x="14" y="24" fill="#60A5FA" font-size="9" font-family="'Geist Mono', monospace" font-weight="600">UNIVERSE 03 // TRUST</text>
-      <text x="14" y="46" fill="#F1F5F9" font-size="12" font-weight="600">Authenticity Auditor</text>
-      <text x="14" y="66" fill="#94A3B8" font-size="10">Verifies warranty legitimacy</text>
-      <text x="14" y="82" fill="#94A3B8" font-size="10">Cross-checks deceptive MRPs</text>
-      <rect x="14" y="96" width="202" height="26" rx="4" fill="#090B10" stroke="#1E2435" />
-      <text x="22" y="113" fill="#60A5FA" font-size="10" font-family="'Geist Mono', monospace">Flagged: Fake 64% MRP</text>
+      <rect width="230" height="138" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#card-shadow)" />
+      <text x="14" y="24" fill="#2563EB" font-size="9" font-family="'JetBrains Mono', monospace" font-weight="700">UNIVERSE 03 // TRUST</text>
+      <text x="14" y="46" fill="#0F172A" font-size="12" font-weight="700">Authenticity Auditor</text>
+      <text x="14" y="66" fill="#64748B" font-size="10">Audits warranty legitimacy</text>
+      <text x="14" y="82" fill="#64748B" font-size="10">Cross-checks deceptive MRPs</text>
+      <rect x="14" y="96" width="202" height="26" rx="6" fill="#EFF6FF" stroke="#BFDBFE" />
+      <text x="22" y="113" fill="#2563EB" font-size="10" font-family="'JetBrains Mono', monospace" font-weight="600">Flagged: Fake 64% MRP</text>
     </g>
 
     <!-- Universe 4 -->
     <g transform="translate(764, 38)">
-      <rect width="240" height="138" rx="6" fill="#12151E" stroke="#1E2435" stroke-width="1" />
-      <text x="14" y="24" fill="#C084FC" font-size="9" font-family="'Geist Mono', monospace" font-weight="600">UNIVERSE 04 // VALUE</text>
-      <text x="14" y="46" fill="#F1F5F9" font-size="12" font-weight="600">Feature / Price Matrix</text>
-      <text x="14" y="66" fill="#94A3B8" font-size="10">ANC, 40h battery, rating weight</text>
-      <text x="14" y="82" fill="#94A3B8" font-size="10">Calculates objective utility score</text>
-      <rect x="14" y="96" width="212" height="26" rx="4" fill="#090B10" stroke="#1E2435" />
-      <text x="22" y="113" fill="#C084FC" font-size="10" font-family="'Geist Mono', monospace">Score: 8.8/10 (Top Utility)</text>
+      <rect width="240" height="138" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#card-shadow)" />
+      <text x="14" y="24" fill="#7C3AED" font-size="9" font-family="'JetBrains Mono', monospace" font-weight="700">UNIVERSE 04 // VALUE</text>
+      <text x="14" y="46" fill="#0F172A" font-size="12" font-weight="700">Feature / Price Matrix</text>
+      <text x="14" y="66" fill="#64748B" font-size="10">ANC, 40h battery, rating weight</text>
+      <text x="14" y="82" fill="#64748B" font-size="10">Computes objective utility score</text>
+      <rect x="14" y="96" width="212" height="26" rx="6" fill="#F5F3FF" stroke="#DDD6FE" />
+      <text x="22" y="113" fill="#7C3AED" font-size="10" font-family="'JetBrains Mono', monospace" font-weight="600">Score: 8.8/10 (Top Utility)</text>
     </g>
   </g>
 
   <!-- Bidirectional connectors to Shared Blackboard -->
-  <path d="M 290 420 L 290 455" stroke="#334155" stroke-width="1.5" stroke-dasharray="2 2" />
-  <path d="M 530 420 L 530 455" stroke="#334155" stroke-width="1.5" stroke-dasharray="2 2" />
+  <path d="M 290 420 L 290 455" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="2 2" />
+  <path d="M 530 420 L 530 455" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="2 2" />
 
   <!-- 3. SHARED BLACKBOARD & RECEIPT STORE -->
   <g transform="translate(48, 455)">
     <!-- Shared Blackboard Bus -->
-    <rect width="520" height="86" rx="8" fill="#10131B" stroke="#1E2433" stroke-width="1" />
-    <text x="18" y="24" fill="#FBBF24" font-size="9" font-family="'Geist Mono', monospace" font-weight="600" letter-spacing="0.5">SHARED BLACKBOARD BUS // CROSS-AGENT STATE SYNCHRONIZATION</text>
-    <text x="18" y="46" fill="#F1F5F9" font-size="12" font-weight="600">Live Discoveries: Unlisted Codes · Drip Pricing Injections · Dead Ends</text>
-    <text x="18" y="66" fill="#94A3B8" font-size="11">Universe 02 publishes voucher 'DEAL500' ➔ Universe 01 applies it at checkout</text>
+    <rect width="520" height="86" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#card-shadow)" />
+    <text x="18" y="24" fill="#D97706" font-size="9" font-family="'JetBrains Mono', monospace" font-weight="700" letter-spacing="0.5">SHARED BLACKBOARD BUS // CROSS-AGENT STATE SYNCHRONIZATION</text>
+    <text x="18" y="46" fill="#0F172A" font-size="12" font-weight="700">Live Discoveries: Unlisted Codes · Drip Pricing Injections · Dead Ends</text>
+    <text x="18" y="66" fill="#64748B" font-size="11">Universe 02 publishes voucher 'DEAL500' ➔ Universe 01 applies it at checkout</text>
 
     <!-- AWS S3 Evidence Store -->
     <g transform="translate(540, 0)">
-      <rect width="484" height="86" rx="8" fill="#10131B" stroke="#1E2433" stroke-width="1" />
-      <text x="18" y="24" fill="#60A5FA" font-size="9" font-family="'Geist Mono', monospace" font-weight="600" letter-spacing="0.5">SPONSOR // AWS S3 RECEIPT &amp; DOM STORE</text>
-      <text x="18" y="46" fill="#F1F5F9" font-size="12" font-weight="600">Immutable Screenshot Receipts &amp; Audit Logs</text>
-      <text x="18" y="66" fill="#94A3B8" font-size="11">Cryptographic proof for every checkout fee, voucher and price claim</text>
+      <rect width="484" height="86" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#card-shadow)" />
+      <text x="18" y="24" fill="#2563EB" font-size="9" font-family="'JetBrains Mono', monospace" font-weight="700" letter-spacing="0.5">SPONSOR // AWS S3 RECEIPT &amp; DOM STORE</text>
+      <text x="18" y="46" fill="#0F172A" font-size="12" font-weight="700">Immutable Screenshot Receipts &amp; Audit Logs</text>
+      <text x="18" y="66" fill="#64748B" font-size="11">Cryptographic proof for every checkout fee, voucher and price claim</text>
     </g>
   </g>
 
   <!-- Connectors Down to Verdict Layer -->
-  <path d="M 308 541 L 308 575" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)" />
-  <path d="M 782 541 L 782 575" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)" />
+  <path d="M 308 541 L 308 575" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow-slate)" />
+  <path d="M 782 541 L 782 575" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow-slate)" />
 
   <!-- 4. VERDICT & AUDIT SYNTHESIS -->
   <g transform="translate(48, 575)">
     <!-- Multiverse Judge -->
-    <rect width="460" height="80" rx="8" fill="#10131B" stroke="#1E2433" stroke-width="1" />
-    <text x="18" y="22" fill="#818CF8" font-size="9" font-family="'Geist Mono', monospace" font-weight="600" letter-spacing="0.5">MULTIVERSE JUDGE // BEDROCK SYNTHESIS</text>
-    <text x="18" y="44" fill="#F1F5F9" font-size="13" font-weight="600">Reconciled Landed Cost Ledger</text>
-    <text x="18" y="62" fill="#34D399" font-size="11" font-family="'Geist Mono', monospace">Net Savings: ₹248 vs surface listing | Verified proof receipts</text>
+    <rect width="460" height="80" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#card-shadow)" />
+    <text x="18" y="22" fill="#7C3AED" font-size="9" font-family="'JetBrains Mono', monospace" font-weight="700" letter-spacing="0.5">MULTIVERSE JUDGE // BEDROCK SYNTHESIS</text>
+    <text x="18" y="44" fill="#0F172A" font-size="13" font-weight="700">Reconciled Landed Cost Ledger</text>
+    <text x="18" y="62" fill="#059669" font-size="11" font-family="'JetBrains Mono', monospace" font-weight="600">Net Savings: ₹248 vs surface listing | Verified proof receipts</text>
 
     <!-- UI & Voice Output -->
     <g transform="translate(480, 0)">
-      <rect width="280" height="80" rx="8" fill="#10131B" stroke="#1E2433" stroke-width="1" />
-      <text x="16" y="22" fill="#94A3B8" font-size="9" font-family="'Geist Mono', monospace" font-weight="600">FRONTEND INTERACTION</text>
-      <text x="16" y="44" fill="#F1F5F9" font-size="12" font-weight="600">Live Swarm Control Board</text>
+      <rect width="280" height="80" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#card-shadow)" />
+      <text x="16" y="22" fill="#64748B" font-size="9" font-family="'JetBrains Mono', monospace" font-weight="700">FRONTEND INTERACTION</text>
+      <text x="16" y="44" fill="#0F172A" font-size="12" font-weight="700">Live Swarm Control Board</text>
       <text x="16" y="62" fill="#64748B" font-size="11">WebSockets · Real-time DOM telemetry</text>
     </g>
 
     <g transform="translate(780, 0)">
-      <rect width="244" height="80" rx="8" fill="#10131B" stroke="#1E2433" stroke-width="1" />
-      <text x="16" y="22" fill="#34D399" font-size="9" font-family="'Geist Mono', monospace" font-weight="600">SPONSOR // ELEVENLABS</text>
-      <text x="16" y="44" fill="#F1F5F9" font-size="12" font-weight="600">Spoken Verdict TTS</text>
+      <rect width="244" height="80" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#card-shadow)" />
+      <text x="16" y="22" fill="#059669" font-size="9" font-family="'JetBrains Mono', monospace" font-weight="700">SPONSOR // ELEVENLABS</text>
+      <text x="16" y="44" fill="#0F172A" font-size="12" font-weight="700">Spoken Verdict TTS</text>
       <text x="16" y="62" fill="#64748B" font-size="11">Natural regional voice synthesis</text>
     </g>
   </g>
