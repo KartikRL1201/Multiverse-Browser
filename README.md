@@ -114,8 +114,8 @@ To prevent unwanted actions or unintended financial commitments, all universes e
 ### Setup
 ```bash
 # Clone the repository
-git clone https://github.com/<YOUR_USER>/<REPO_NAME>.git
-cd BytoVate_Track2
+git clone https://github.com/KartikRL1201/Multiverse-Browser.git
+cd Multiverse-Browser
 
 # Set up virtual environment and install dependencies
 uv venv .venv
