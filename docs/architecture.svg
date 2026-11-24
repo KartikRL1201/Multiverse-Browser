@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 680" width="100%" height="100%" style="background:#0f172a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <linearGradient id="gradPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+    <linearGradient id="gradTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <linearGradient id="gradOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#ef4444" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Title & Track -->
+  <text x="40" y="48" fill="#f8fafc" font-size="22" font-weight="bold">Multiverse Browser · System Architecture</text>
+  <text x="40" y="74" fill="#94a3b8" font-size="13">wHACKiest 2026 · Track 2 (Beyond the Browser) · "One goal, many universes, one verdict you can trust."</text>
+
+  <!-- 1. Input Layer -->
+  <g transform="translate(40, 100)" filter="url(#shadow)">
+    <rect width="280" height="90" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+    <text x="20" y="32" fill="#38bdf8" font-size="12" font-weight="bold">USER INTENT INPUT</text>
+    <text x="20" y="56" fill="#f1f5f9" font-size="15" font-weight="600">Goal: Voice / Natural Text</text>
+    <text x="20" y="74" fill="#94a3b8" font-size="11">e.g. "Wireless ANC headphones &lt; ₹3,000"</text>
+  </g>
+
+  <!-- Arrow Input -> ElevenLabs STT -->
+  <path d="M 320 145 L 370 145" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+
+  <g transform="translate(370, 100)" filter="url(#shadow)">
+    <rect width="300" height="90" rx="10" fill="#1e293b" stroke="#6366f1" stroke-width="1.5" />
+    <text x="20" y="30" fill="#a855f7" font-size="11" font-weight="bold">ELEVENLABS SCRIBE (SPONSOR)</text>
+    <text x="20" y="54" fill="#f1f5f9" font-size="14" font-weight="600">Multilingual Realtime STT</text>
+    <text x="20" y="72" fill="#94a3b8" font-size="11">Supports Hindi, Tamil, Kannada + 90 languages</text>
+  </g>
+
+  <!-- Arrow STT -> Orchestrator Planner -->
+  <path d="M 670 145 L 720 145" stroke="#64748b" stroke-width="2" />
+
+  <g transform="translate(720, 100)" filter="url(#shadow)">
+    <rect width="340" height="90" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5" />
+    <text x="20" y="30" fill="#c084fc" font-size="11" font-weight="bold">AWS BEDROCK (SPONSOR)</text>
+    <text x="20" y="54" fill="#f1f5f9" font-size="14" font-weight="600">Strategy Planner (Claude 3.5)</text>
+    <text x="20" y="72" fill="#94a3b8" font-size="11">Decomposes goal into 4 specialized heuristics</text>
+  </g>
+
+  <!-- Connector Down to Parallel Universes -->
+  <path d="M 890 190 L 890 225 L 550 225 L 550 245" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="4" fill="none" />
+
+  <!-- 2. Parallel Universes Box -->
+  <rect x="40" y="245" width="1020" height="175" rx="12" fill="#0b1329" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="6" />
+  <text x="60" y="272" fill="#94a3b8" font-size="12" font-weight="bold">PARALLEL UNIVERSE BROWSER AGENTS (ISOLATED HEADLESS SESSIONS · PLAYWRIGHT / AGENTCORE)</text>
+
+  <!-- Universe 1 -->
+  <g transform="translate(60, 290)">
+    <rect width="225" height="110" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5" />
+    <text x="14" y="28" fill="#34d399" font-size="11" font-weight="bold">UNIVERSE 1: BUDGET</text>
+    <text x="14" y="48" fill="#f1f5f9" font-size="13" font-weight="600">Landed Cost Hunter</text>
+    <text x="14" y="68" fill="#94a3b8" font-size="10">Simulates checkout</text>
+    <text x="14" y="86" fill="#f87171" font-size="10">Flags Drip Pricing (+₹348)</text>
+  </g>
+
+  <!-- Universe 2 -->
+  <g transform="translate(310, 290)">
+    <rect width="225" height="110" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" />
+    <text x="14" y="28" fill="#fbbf24" font-size="11" font-weight="bold">UNIVERSE 2: DEAL HUNTER</text>
+    <text x="14" y="48" fill="#f1f5f9" font-size="13" font-weight="600">Promo Code Scraper</text>
+    <text x="14" y="68" fill="#94a3b8" font-size="10">Scrapes hidden footer vouchers</text>
+    <text x="14" y="86" fill="#34d399" font-size="10">Found: 'DEAL500' (-₹500)</text>
+  </g>
+
+  <!-- Universe 3 -->
+  <g transform="translate(560, 290)">
+    <rect width="225" height="110" rx="8" fill="#1e293b" stroke="#0ea5e9" stroke-width="1.5" />
+    <text x="14" y="28" fill="#38bdf8" font-size="11" font-weight="bold">UNIVERSE 3: TRUST &amp; SIGNALS</text>
+    <text x="14" y="48" fill="#f1f5f9" font-size="13" font-weight="600">Authenticity Auditor</text>
+    <text x="14" y="68" fill="#94a3b8" font-size="10">Verifies manufacturer warranty</text>
+    <text x="14" y="86" fill="#f87171" font-size="10">Flags Fake MRPs (₹6,999)</text>
+  </g>
+
+  <!-- Universe 4 -->
+  <g transform="translate(810, 290)">
+    <rect width="230" height="110" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5" />
+    <text x="14" y="28" fill="#e879f9" font-size="11" font-weight="bold">UNIVERSE 4: BEST VALUE</text>
+    <text x="14" y="48" fill="#f1f5f9" font-size="13" font-weight="600">Specs / Price Optimizer</text>
+    <text x="14" y="68" fill="#94a3b8" font-size="10">Weights 40h ANC vs price</text>
+    <text x="14" y="86" fill="#a78bfa" font-size="10">Score: 8.8 / 10</text>
+  </g>
+
+  <!-- 3. Shared Blackboard & Evidence Layer -->
+  <g transform="translate(40, 440)" filter="url(#shadow)">
+    <rect width="520" height="90" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" />
+    <text x="20" y="28" fill="#fbbf24" font-size="12" font-weight="bold">SHARED BLACKBOARD (CROSS-AGENT TELEPATHY)</text>
+    <text x="20" y="50" fill="#f1f5f9" font-size="13">Live Discoveries: Coupons · Fake MRPs · Drip Fees · Dead Ends</text>
+    <text x="20" y="70" fill="#94a3b8" font-size="11">Universe 2 broadcasts coupon 'DEAL500' ➔ Universe 1 adopts it live!</text>
+  </g>
+
+  <g transform="translate(580, 440)" filter="url(#shadow)">
+    <rect width="480" height="90" rx="10" fill="#1e293b" stroke="#0ea5e9" stroke-width="1.5" />
+    <text x="20" y="28" fill="#38bdf8" font-size="12" font-weight="bold">AWS S3 EVIDENCE &amp; RECEIPT STORE</text>
+    <text x="20" y="50" fill="#f1f5f9" font-size="13">Timestamped Screenshot Receipts &amp; DOM Snapshots</text>
+    <text x="20" y="70" fill="#94a3b8" font-size="11">Provides verifiable proof for every price and flagged dark pattern</text>
+  </g>
+
+  <!-- 4. Synthesis & Verdict Layer -->
+  <g transform="translate(40, 555)" filter="url(#shadow)">
+    <rect width="450" height="85" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5" />
+    <text x="20" y="26" fill="#c084fc" font-size="11" font-weight="bold">MULTIVERSE JUDGE (BEDROCK / FASTAPI)</text>
+    <text x="20" y="48" fill="#f1f5f9" font-size="14" font-weight="600">Calculates True Landed Cost vs Baseline</text>
+    <text x="20" y="68" fill="#94a3b8" font-size="11">Saves ₹248 vs naive listing; provides verifiable receipt links</text>
+  </g>
+
+  <g transform="translate(510, 555)" filter="url(#shadow)">
+    <rect width="280" height="85" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="20" y="26" fill="#38bdf8" font-size="11" font-weight="bold">VERDICT DASHBOARD (REACT + WS)</text>
+    <text x="20" y="48" fill="#f1f5f9" font-size="14" font-weight="600">Live Consensus Card</text>
+    <text x="20" y="68" fill="#94a3b8" font-size="11">Side-by-side trade-off matrix</text>
+  </g>
+
+  <g transform="translate(810, 555)" filter="url(#shadow)">
+    <rect width="250" height="85" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="1.5" />
+    <text x="20" y="26" fill="#34d399" font-size="11" font-weight="bold">ELEVENLABS TTS (SPONSOR)</text>
+    <text x="20" y="48" fill="#f1f5f9" font-size="14" font-weight="600">Spoken Regional Verdict</text>
+    <text x="20" y="68" fill="#94a3b8" font-size="11">Audio explanation in user's language</text>
+  </g>
+
+</svg>
