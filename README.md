@@ -6,112 +6,75 @@
 
 ---
 
-## 1. The Real Problem
+## 1. What Multiverse Browser Actually Is
 
-Online comparison is fundamentally broken:
+Multiverse Browser is **not just a shopping price checker**. It is a **general-purpose parallel web-goal engine** for any task that forces a person to open 15 tabs, cross-check constraints, and dig through fine print to uncover hidden catches (fees, eligibility cutoffs, deadlines, lock-ins, cancellation traps, or better alternative paths).
 
-1. **Listed Price ≠ Checkout Price**: Traditional aggregators (Google Shopping, PriceSpy, BuyHatke) only index surface listing prices. They never proceed to the checkout step, completely missing mandatory handling charges, surge fees, and payment surcharges.
-2. **Deceptive Design (Dark Patterns)**: A 2025 LocalCircles audit found that **97% of leading Indian e-commerce platforms use at least one dark pattern**. The most pervasive is **drip pricing** (where fees are incrementally injected during checkout) and **fabricated MRPs** (inflating the anchor price to display false 60%+ discounts).
-3. **Linear Agent Bottlenecks**: Contemporary single-agent browser tools (AutoGPT, Operator, Browser Use) execute sequentially down a single search path. If an agent gets stuck in a captcha or explores a suboptimal retailer, the user waits minutes for a mediocre outcome.
+Instead of running a single linear browser agent or hardcoding a fixed set of views, a **Dynamic Strategy Planner** inspects your goal, decides **how many parallel universes (`N`) are needed** for that specific problem, assigns each universe a distinct exploration strategy, and spawns `N` isolated Playwright browser workers that share discoveries on a live **Blackboard**.
 
----
-
-## 2. The Solution: Parallel Heuristic Swarm
-
-Instead of a single browser session or 15 open tabs, **Multiverse Browser** takes one high-level intent and forks it into four parallel, isolated browser universes:
-
-* **Universe 01 (Budget / Landed Cost)**: Navigates through product listings directly to checkout to measure true landed cost (Base + Shipping + Convenience Fees - Discounts).
-* **Universe 02 (Voucher Scraper)**: Scours promotional banners, unlisted markdown footers, and secret member codes.
-* **Universe 03 (Trust & Authenticity)**: Audits manufacturer warranty terms, seller ratings, and checks claimed MRPs against verified manufacturer indices to flag fake discounts.
-* **Universe 04 (Value Matrix)**: Optimizes feature-to-price ratios (e.g., Active Noise Cancellation specifications, battery longevity, and verified sentiment).
-
-### The Shared Blackboard (Cross-Agent Memory)
-Unlike isolated tabs, these agents communicate via an asynchronous **Shared Blackboard**. When Universe 02 discovers an unlisted promo code (`DEAL500`), it broadcasts this discovery. Universe 01 immediately consumes the code, applies it to its cart, and recalculates the true landed cost in real time.
-
-A central **Judge** aggregates DOM evidence, verifies screenshot receipts, and produces a single reconciled ledger showing verified savings vs the naive surface result.
+### Target Use Cases
+* **Money & Shopping**
+  * *Big purchases* (laptops, phones, headphones): cheapest new checkout, refurbished, student discounts, last-gen alternatives, sale timing.
+  * *Plans & bills* (broadband, mobile, insurance, credit cards): base vs post-promo renewal surge, benefits, hidden fees, lock-in clauses.
+  * *Medicines*: brand vs Jan Aushadhi generic salt match vs 1mg/Netmeds/local delivery cost & ETA.
+* **Travel & Logistics**
+  * *Trips*: flights vs train vs bus, split-ticket routes, baggage drip fees, cancellation fine print, promos.
+  * *Stays*: hotels, hostels, PGs, or rentals weighting commute, total cost, and safety signals.
+* **Student & Career Life**
+  * *Opportunities*: scholarships, internships, hackathons, jobs — scoring eligibility against your profile and pruning expired/bonded traps.
+  * *Courses*: free or low-cost learning paths comparing YouTube, MOOC audit/financial aid, official docs, and books.
 
 ---
 
-## 3. System Architecture
+## 2. How It Works
 
 ![Multiverse Browser System Architecture](docs/architecture.svg)
 
+1. **Goal Ingestion**: Speak (ElevenLabs Scribe STT) or type any web goal.
+2. **Dynamic Strategy Planning (`backend/app/planner.py`)**: Analyzes the domain and prompt constraints to dynamically allocate **`N` universes** (e.g., 3 for a focused plan/medicine check, 4–5 for multi-constraint travel, scholarships, or big purchases).
+3. **Parallel Playwright Swarm (`backend/app/universes/dynamic_worker.py`)**: Spawns `N` isolated headless Chromium browser contexts under strict read-only guardrails, navigating candidate sites and capturing live screenshot receipts.
+4. **Shared Blackboard (`backend/app/blackboard.py`)**: Universes publish vouchers, drip-pricing traps, expired deadlines, bond clauses, or generic equivalents mid-flight so peer universes adapt live.
+5. **Multiverse Judge (`backend/app/integrations/aws_client.py`)**: Synthesizes evidence across whichever `N` universes ran into one reconciled verdict with proof and spoken audio (ElevenLabs TTS).
+
 ---
 
-## 4. Honesty & Transparency Matrix
-
-In adherence to hackathon evaluation guidelines, here is an unvarnished breakdown of what is working, what is simulated for demonstration, what is stubbed, and what is planned:
+## 3. Honesty & Transparency Matrix
 
 | Component | Status | Technical Reality |
 |---|---|---|
-| **Swarm Orchestrator & Telemetry** | 🟢 **Real** | Asynchronous Python worker loop, concurrent execution, live WebSockets (`/ws/stream`), and dynamic status broadcasting. |
-| **Shared Blackboard State** | 🟢 **Real** | In-memory asyncio pub/sub bus allowing parallel agents to publish discoveries and react to peer intelligence mid-flight. |
-| **Live Control Dashboard** | 🟢 **Real** | WebSockets-driven responsive dashboard displaying real-time agent telemetry, simulated DOM viewports, blackboard activity, and financial verdict cards. |
-| **Planted Mock E-Commerce Testbed** | 🟢 **Real / Mocked** | 3 self-hosted stores (`/mock/dealnest`, `/mock/flashkart`, `/mock/electrobazaar`) with planted real-world quirks (hidden ₹500 footer coupon, fake 64% MRP inflation, and ₹348 checkout drip fees). |
-| **Agent Navigation Core** | 🟡 **Scripted Engine** | Deterministic browser execution over self-hosted endpoints with Playwright compatibility hooks, engineered to avoid network latency and flakiness during evaluation. |
-| **ElevenLabs Voice (STT & TTS)** | 🟠 **Stubbed Interface** | Functional client interfaces (`transcribe_speech`, `generate_verdict_audio`) ready for API key injection; falls back cleanly to local audio synthesis when keys are omitted. |
-| **AWS Bedrock Judge & S3 Storage** | 🟠 **Stubbed Interface** | Bedrock judge synthesis pipeline and S3 receipt URL generator; uses local fallback when AWS keys are omitted. |
-| **Production Real-World Retailer Extension** | 🔵 **Planned (Post-Hackathon)** | Client-side Chrome extension executing browser universes on the user's local session to bypass bot detection. |
+| **Dynamic Strategy Planner (`N` Universes)** | 🟢 **Real** | Analyzes goal domain & constraint facets to dynamically allocate 2–6 tailored universes; optional Bedrock LLM planner hook included. |
+| **Swarm Orchestrator & Shared Blackboard** | 🟢 **Real** | Asyncio parallel runner with live WebSockets (`/ws/stream`) and cross-agent pub/sub discovery exchange. |
+| **Playwright Headless Browser Execution** | 🟢 **Real** | Spawns isolated Chromium contexts, clicks through checkout/terms pages, applies blackboard vouchers in real DOM inputs, and streams live JPEG screenshots. |
+| **Multi-Domain Self-Hosted Testbed** | 🟢 **Real / Mocked** | Self-hosted portals across e-commerce (`/mock/*`), travel, scholarships, plans/bills, medicines, and courses (`/portal/*`) with planted fine-print catches. |
+| **Dynamic Swarm Control UI** | 🟢 **Real** | Live light-theme WebSocket dashboard that dynamically renders `N` browser tiles based on the planner output. |
+| **ElevenLabs Voice (STT & TTS)** | 🟠 **Stubbed Interface** | Client wrappers (`transcribe_speech`, `generate_verdict_audio`) ready for API key injection; falls back cleanly to Web Speech API in browser. |
+| **AWS Bedrock Judge & S3 Storage** | 🟠 **Stubbed Interface** | Domain-aware deterministic judge reconciliation + S3 URL generator; falls back cleanly without requiring AWS credentials. |
+| **Live Anti-Bot Commercial Sites** | 🔵 **Planned (Post-Hackathon)** | Chrome extension running universes in the user's own authenticated browser session to bypass Cloudflare/Akamai bot walls. |
 
 ---
 
-## 5. Real-World Limits & Engineering Trade-offs
+## 4. Real-World Limits & Engineering Trade-offs
 
-We believe in being 100% upfront about technical constraints:
-
-### Why Self-Hosted Mock Shops Instead of Scraping Amazon/Flipkart Live?
-1. **Aggressive Bot Mitigation**: Commercial platforms (Amazon, Flipkart, Myntra) employ Cloudflare, Akamai, and Datadome. Headless browsers running from data centers get hit with captchas or IP bans within seconds.
-2. **Demo Reproducibility**: In a 5-minute hackathon pitch, live web scraping introduces unacceptable flakiness (network latency, layout shifts, sudden login walls).
-3. **Planted Quirk Control**: Self-hosting 3 mock stores allowed us to plant real-world dark patterns (drip pricing, fake MRPs, hidden footer coupons) under deterministic conditions for rigorous evaluation.
-
-### Real Agent Success Rates
-On dynamic, real-world web pages, browser agents achieve roughly 60–80% task completion. The Multiverse swarm architecture is specifically designed around this reality: **individual universes can fail or dead-end without jeopardizing the final verdict**, because the judge only synthesizes successful, receipt-backed runs.
-
-### The Realistic Product Path (Chrome Extension)
-Running headless browser clusters on servers is computationally expensive and vulnerable to bot blocking. The long-term commercial architecture is a **client-side Chrome extension**: the user specifies a goal, and lightweight background workers execute tabs within the user's own authenticated browser environment, eliminating bot detection and server compute costs.
+1. **Why Self-Hosted Multi-Domain Portals for the Demo?**  
+   Commercial sites (Amazon, MakeMyTrip, Coursera, airlines) enforce Cloudflare/Akamai bot walls against datacenter headless browsers. Self-hosted portals across 6 domains let us demonstrate real Playwright multi-universe execution, DOM interaction, screenshot capture, and planted fine-print traps reliably in a 5-minute live pitch.
+2. **Dynamic `N` Sizing & Cost Control**  
+   Running 8 universes on a simple question wastes latency and tokens. The Strategy Planner scales `N` dynamically to the goal's complexity, and keeps worker budgets capped (`15` steps / `60s` max).
+3. **Swarm Resilience**  
+   On the open web, single browser agents fail ~20–40% of the time on layout changes or dead links. Because universes race in parallel and dead-ends are pruned, the Judge still produces a receipt-backed verdict from surviving universes.
 
 ---
 
-## 6. Telemetry & WebSocket Event Schema
+## 5. Telemetry & Safety Guardrails
 
-Every micro-action executed by an agent streams to the client via `/ws/stream`:
-
-```json
-{
-  "universe": "budget",
-  "universe_name": "Budget Universe",
-  "step": 3,
-  "action": "[DripPricingDetected] Checkout injects +₹348 unlisted fees. True landed cost: ₹2547",
-  "target_url": "http://localhost:8000/mock/electrobazaar/soundpulse-500/checkout",
-  "screenshot": "",
-  "found_price": 2547,
-  "status": "flagged",
-  "metadata": {
-    "drip_fees": 348,
-    "original_listed": 2199
-  }
-}
-```
+* **Read-Only Mode**: Agents never submit passwords, OTPs, or payment details.
+* **Domain Allowlist**: Navigation outside allowed domains is blocked (`_is_allowed_url`).
+* **Step & Time Caps**: Max 15 steps and 60s timeout per universe.
+* **Human-in-the-Loop**: Final action/checkout always stays with the user.
 
 ---
 
-## 7. Safety & Guardrails
+## 6. Quickstart & Local Reproduction
 
-To prevent unwanted actions or unintended financial commitments, all universes enforce four strict boundaries:
-* **Read-Only Mode**: Agents are strictly prohibited from submitting credit card information, passwords, or clicking final payment buttons.
-* **Domain Allowlist**: Agents only navigate within verified candidate domains; any external redirects are terminated.
-* **Step & Time Budgets**: Hard limits (max 15 steps / 60 seconds per universe) prevent runaway scraping loops or resource exhaustion.
-* **Human-in-the-Loop**: The browser delivers receipts and direct checkout links; final order authorization is always performed by the human user.
-
----
-
-## 8. Quickstart & Local Reproduction
-
-### Prerequisites
-* Python 3.10+ (tested on Python 3.13)
-* `uv` (recommended) or standard `pip`
-
-### Setup
 ```bash
 # Clone the repository
 git clone https://github.com/KartikRL1201/Multiverse-Browser.git
@@ -121,27 +84,12 @@ cd Multiverse-Browser
 uv venv .venv
 source .venv/bin/activate
 uv pip install -r backend/requirements.txt
-```
 
-### Run the Server & Dashboard
-```bash
+# Run the FastAPI server + Playwright swarm engine
 .venv/bin/uvicorn backend.app.main:app --port 8000
 ```
 
-1. Open **`http://localhost:8000/`** in your browser.
-2. Click **EXECUTE SWARM**:
-   * **Universe 02 (Voucher)** discovers unlisted code `DEAL500` on *DealNest*.
-   * **Universe 01 (Budget)** receives the code via Blackboard synchronization and slashes the landed cost to ₹2,299.
-   * **Universe 03 (Trust)** flags *FlashKart's* fake 64% MRP claim.
-   * **Universe 01 (Budget)** flags *ElectroBazaar's* drip pricing fee trap (+₹348 added at checkout).
-   * **Multiverse Judge** issues the reconciled ledger: **₹248 saved vs surface listing with proof receipts**.
-3. Inspect the underlying target mock stores directly at **`http://localhost:8000/mock`**.
-
----
-
-## 9. Hackathon Project Details
-
-* **Event**: wHACKiest 2026 (Devnovate)
-* **Track**: Track 2 (Beyond the Browser: Reimagine How We Use the Web)
-* **Institution**: Ramaiah Institute of Technology
-* **Submission Date**: 24 November 2026
+1. Open **`http://localhost:8000/`**.
+2. Pick any preset domain goal (Shopping, Travel, Scholarships, Plans & Bills, Medicines, Courses) or enter your own custom web goal.
+3. Click **PLAN & EXECUTE SWARM** and watch the Planner dynamically spawn `N` isolated Playwright browsers, exchange discoveries on the Shared Blackboard, and stream live screenshots to the verdict card.
+4. Inspect the raw self-hosted portals at **`http://localhost:8000/portal`** and **`http://localhost:8000/mock`**.
